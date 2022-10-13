@@ -29,9 +29,9 @@ pipeline {
         }
         
         stage('Build') {
-            agent {
-                label 'linux'
-            }
+//             agent {
+//                 label 'linux'
+//             }
             steps {
                 // Run Maven on a Unix agent.
                 // sh "mvn -Dmaven.test.failure.ignore=true -f api-gateway clean package"
