@@ -92,7 +92,7 @@ pipeline {
         
     stage('pulltestingcode') {
       steps {
-        git branch: 'development', credentialsId: 'Github', url: 'git@github.com:kunalgarg/functional_testing.git'
+        git branch: 'main', credentialsId: 'Github', url: 'git@github.com:kunalgarg/functional_testing.git'
       }
     }
     stage('execute test') {
@@ -111,7 +111,7 @@ pipeline {
                           sh '''cd jenkins_test
                           echo test>deploy.txt
                           git add .
-                          git commit -m "merging development to qa on sucesfull build"
+                          git commit -m "merging main to qa on sucesfull build"
                           git checkout -b qa
                           git pull origin qa
                           git push origin qa'''
