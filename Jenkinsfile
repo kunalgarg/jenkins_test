@@ -90,6 +90,11 @@ pipeline {
             }
         }
         
+    stage('pulltestingcode') {
+      steps {
+        git branch: 'main', credentialsId: 'Github', url: 'git@github.com:kunalgarg/jenkins_test.git'
+      }
+    }
     stage('execute test') {
       steps {
         sh "mvn clean test"
@@ -102,7 +107,7 @@ pipeline {
                       sh 'echo ssh -i $SSH_KEY -l git -o StrictHostKeyChecking=no \\"\\$@\\" > local_ssh.sh'
                       sh 'chmod +x local_ssh.sh'
                       withEnv(['GIT_SSH=/var/lib/jenkins/workspace/pipelienfromgit/local_ssh.sh']) {
-                          sh 'git clone git@github.com:kunalgarg/jenkins_test.git'
+                          sh 'git@github.com:kunalgarg/jenkins_test.git'
                           sh '''cd jenkins_test
                           echo test>deploy.txt
                           git add .
@@ -117,5 +122,3 @@ pipeline {
     }
   }
 }
-
-
