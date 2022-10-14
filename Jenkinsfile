@@ -92,7 +92,7 @@ pipeline {
         
     stage('pulltestingcode') {
       steps {
-        git branch: 'development', credentialsId: 'Github', url: 'git@github.com:kunalgarg/jenkins_test.git'
+        git branch: 'development', credentialsId: 'Github', url: 'git@github.com:kunalgarg/functional_testing.git'
       }
     }
     stage('execute test') {
