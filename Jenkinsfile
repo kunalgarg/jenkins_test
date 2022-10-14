@@ -66,7 +66,7 @@ pipeline {
     stages {
         stage('pullscm') {
             steps {
-                git credentialsId: 'Github', url: 'git@github.com:kunalgarg/jenkins_test.git'
+                 git credentialsId: 'Github', url: 'git@github.com:kunalgarg/jenkins_test.git'
             }
         }
         
@@ -92,7 +92,7 @@ pipeline {
         
     stage('pulltestingcode') {
       steps {
-        git branch: 'main', credentialsId: 'Github', url: 'git@github.com:kunalgarg/jenkins_test.git'
+        git branch: 'development', credentialsId: 'Github', url: 'git@github.com:kunalgarg/jenkins_test.git'
       }
     }
     stage('execute test') {
@@ -111,7 +111,7 @@ pipeline {
                           sh '''cd jenkins_test
                           echo test>deploy.txt
                           git add .
-                          git commit -m "merging master to qa on sucesfull build"
+                          git commit -m "merging development to qa on sucesfull build"
                           git checkout -b qa
                           git pull origin qa
                           git push origin qa'''
